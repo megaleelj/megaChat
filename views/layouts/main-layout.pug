@@ -1,0 +1,82 @@
+include ../mixins/mixins
+
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        link(rel="shortcut icon", type="x-icon" href="/image/icons/app-icon-512x512.png")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        title #{pageTitle}
+        link(rel='stylesheet', href='https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css', integrity='sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T', crossorigin='anonymous')
+        link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.1/cropper.min.css')
+        link(rel="stylesheet", href="/css/main.css")
+        link(rel='manifest' href='/manifest.json')
+        meta(name='apple-mobile-web-app-capable' content='yes')
+        meta(name='apple-mobile-web-app-status-bar-style' content='black')
+        meta(name='apple-mobile-web-app-tittle' content='MegaChat')
+        link(rel='apple-touch-icon' href='/image/icons/apple-icon-57x57.png' sizes='57x57')
+        link(rel='apple-touch-icon' href='/image/icons/apple-icon-60x60.png' sizes='60x60')
+        link(rel='apple-touch-icon' href='/image/icons/apple-icon-72x72.png' sizes='72x72')
+        link(rel='apple-touch-icon' href='/image/icons/apple-icon-76x76.png' sizes='76x76')
+        link(rel='apple-touch-icon' href='/image/icons/apple-icon-114x114.png' sizes='114x114')
+        link(rel='apple-touch-icon' href='/image/icons/apple-icon-120x120.png' sizes='120x120')
+        link(rel='apple-touch-icon' href='/image/icons/apple-icon-144x144.png' sizes='144x144')
+        link(rel='apple-touch-icon' href='/image/icons/apple-icon-152x152.png' sizes='152x152')
+        link(rel='apple-touch-icon' href='/image/icons/apple-icon-180x180.png' sizes='180x180')
+        meta(name='msapplication-TitleImage' content='/image/icons/app-icon-144x144.png')
+        meta(name='msapplication-TitleColor' content='#ffffff')
+        meta(name='theme-color' content='#000000')
+            
+    body
+        script.
+            var userLoggedIn = !{userLoggedInJs};
+        .wrapper
+            .row
+                nav.col-2
+                    a.wo(href="/")
+                        i.fa-brands.fa-wirsindhandwerk
+                    span 
+                    a(href="/")
+                        i.fa-solid.fa-house
+                    span 
+                    a(href="/search")
+                        i.fa-solid.fa-magnifying-glass
+                    span 
+                    a(href="/notifications")
+                        i.fa-regular.fa-bell
+                        span#notificationsBadge 8
+                    a(href="/messages")
+                        i.fa-regular.fa-envelope
+                        span#messagesBadge 8
+                    a(href="/profile")
+                       i.fa-regular.fa-user
+                    span 
+                     a(href="/logout")
+                       i.fa-solid.fa-right-from-bracket
+                    span 
+                .mainSectionContainer.col-10.col-md-8.col-lg-6
+                    .titleContainer 
+                        h1 #{pageTitle}
+                        block headerButton
+                        
+                    block content
+
+                .d-none.d-md-block.col-md-2.col-lg-4
+        #notificationList
+                     
+
+        script(src='https://kit.fontawesome.com/d214d52d6d.js' crossorigin='anonymous')
+        script(src='https://code.jquery.com/jquery-3.7.1.min.js', integrity='sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=', crossorigin='anonymous')
+        script(src='https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.1/cropper.min.js')
+        script(src='https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js', integrity='sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1', crossorigin='anonymous')
+        script(src='https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js', integrity='sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM', crossorigin='anonymous')
+        script(src='https://cdn.socket.io/3.1.3/socket.io.min.js' integrity='sha384-cPwlPLvBTa3sKAgddT6krw0cJat7egBga3DJepJyrLl4Q9/5WLra3rrnMcyTyOnh' crossorigin='anonymous')
+
+       
+        block scripts
+
+        script(src="/js/promise.js")
+        script(src="/js/fetch.js")
+        script(src="/aps.js")
+        script(src="/js/common.js")
+        script(src="/js/clientSocket.js")

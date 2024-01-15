@@ -1,0 +1,20 @@
+extends layouts/main-layout.pug
+
+block content
+    if !profileUser
+        span.errorMessage Hmm...this page doesn’t exist. Try searching for something else. 
+    else
+        script.
+            var profileUserId = '!{profileUser._id}';
+            var selectedTab  = '!{selectedTab}'; 
+
+        .tabsContainer
+            +createTab("Following", `/profile/${profileUser.username}/following`, selectedTab != "followers")
+            +createTab("Followers", `/profile/${profileUser.username}/followers`, selectedTab == "followers")
+
+        .resultsContainer 
+
+        +createPostModals(userLoggedIn)
+        
+block scripts 
+    script(src="/js/followersAndfollowing.js") 
